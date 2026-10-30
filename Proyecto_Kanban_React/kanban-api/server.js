@@ -4,20 +4,20 @@ import mysql from "mysql2/promise";
 
 const app = express();
 const PORT = Number(process.env.PORT ?? 3001);
-const allowedOrigin = process.env.CORS_ORIGIN ?? "https://proyecto-kanban-react-cg.vercel.app/";
+const allowedOrigin = process.env.CORS_ORIGIN ?? "https://vercel.app";
 
 app.use(cors({ origin: allowedOrigin }));
 app.use(express.json({ limit: "20kb" }));
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST ?? "localhost",
-  port: Number(process.env.DB_PORT ?? 3306),
-  user: process.env.DB_USER ?? "root",
-  password: process.env.DB_PASSWORD ?? "",
-  database: process.env.DB_NAME ?? "kanban_db",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 20976,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const STATUS = ["todo", "doing", "done"];
