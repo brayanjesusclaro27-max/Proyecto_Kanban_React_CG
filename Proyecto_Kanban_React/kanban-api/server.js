@@ -4,7 +4,7 @@ import mysql from "mysql2/promise";
 
 const app = express();
 const PORT = Number(process.env.PORT ?? 3001);
-const allowedOrigin = process.env.CORS_ORIGIN ?? "http://localhost:5173";
+const allowedOrigin = process.env.CORS_ORIGIN ?? "https://proyecto-kanban-react-cg.vercel.app/";
 
 app.use(cors({ origin: allowedOrigin }));
 app.use(express.json({ limit: "20kb" }));

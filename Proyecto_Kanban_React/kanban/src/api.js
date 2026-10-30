@@ -1,4 +1,4 @@
-const API = `${import.meta.env.VITE_API_URL ?? "http://localhost:3001"}/api/tasks`;
+const API = `${import.meta.env.VITE_API_URL ?? "https://proyecto-kanban-react-cg.onrender.com"}/api/tasks`;
 const JSON_HEADERS = { "Content-Type": "application/json" };
 
 async function request(url, options = {}) {
